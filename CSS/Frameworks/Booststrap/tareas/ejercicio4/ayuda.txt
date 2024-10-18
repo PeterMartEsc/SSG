@@ -1,4 +1,0 @@
-<p>This website was made by <a href="https://github.com/rajaprerak">this person</a>,
-              this html was edited by me for a class task, practicing "Booststrap" framework, 
-              modifiying only some links and elements. All rights reserved to him.
-            </p>
