@@ -5,20 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Friki</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style></style>
     <link rel="stylesheet" type="text/css" href="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cookieconsent.min.css"/>
+    
+    <style>
+        .body {
+            background: url('https://via.placeholder.com/1500x500') no-repeat center center;
+            background-size: cover;
+            height: 500px;
+            position: relative;
+        }
+        .body-wellcome {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+        }
+    </style>
+    
     <script  type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cookieconsent.min.js"></script>
     <script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cauce_cookie.js"></script>
     <script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/estadisticasweb/scripts/piwik-base.js"></script>
     <script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/estadisticasweb/scripts/piwik-eforma.js"></script>
 </head>
 <body>
+    <!--NavBar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">FrikiWeb</a>
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        
         <div class="collapse navbar-collapse" id="navbarNav">
+                <!--ml auto lo coloca a la derecha (margin left auto)-->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Inicio</a>
@@ -32,11 +53,75 @@
             </ul>
         </div>
     </nav>
-    
 
+    <!--Body-->
+    <div class="body">
+        <div class="body-wellcome">
+            <h1>Bienvenidos a FrikiWeb</h1>
+            <p>Tu portal de contenido geek</p>
+        </div>
+    </div>
+
+    <!--Grid-->
+    <div class="container mt-5"> <!--mt es "margin top" del contenedor-->
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="card">
+
+                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="...">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Artículo 1</h5>
+                        <p class="card-text">Descripción del artículo 1.</p>
+                        <a href="#" class="btn btn-primary">Leer más</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+
+                        <!--La etiqueta "alt" se usa cuando no se puede cargar la imagen, muestra el texto-->
+                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="...">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Artículo 2</h5>
+                        <p class="card-text">Descripción del artículo 2.</p>
+                        <a href="#" class="btn btn-primary">Leer más</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+
+                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="...">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Artículo 3</h5>
+                        <p class="card-text">Descripción del artículo 3.</p>
+                        <a href="#" class="btn btn-primary">Leer más</a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--Footer-->
+    <!--La clase py-3 aplica un padding en el eje y (top, bottom) de tipo 3 (0 sin relleno, 5 el relleno más grande)-->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>© 2024 FrikiWeb. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
 </html>
 
