@@ -36,9 +36,10 @@ services:
       DB_NAME: prestashop
       DB_USER: root
       DB_PASSWD: admin
-      PS_INSTALL_AUTO: 1
+      #PS_INSTALL_AUTO: 1
       PS_DOMAIN: localhost:8080
-
+      PS_FOLDER_ADMIN: admin4577 # Ejemplo?
+      PS_FOLDER_INSTALL: install4577  # Ejemplo?
     networks:
     - prestashop_network
 
