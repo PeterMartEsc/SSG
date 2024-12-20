@@ -1,12 +1,10 @@
-version: "3"
 services:
-  
   mysql:
-    image: mysql:5.7
     container_name: some-mysql
-    volumes:
-    - dbdata:/var/lib/mysql # Persistir BBDD
+    image: mysql:5.7
     restart: unless-stopped
+    volumes:
+      - dbdata:/var/lib/mysql # Persistir BBDD 
     environment:
       MYSQL_ROOT_PASSWORD: admin
       MYSQL_DATABASE: prestashop
@@ -14,41 +12,34 @@ services:
     - prestashop_network
 
   prestashop:
-    image: prestashop/prestashop:latest
     container_name: prestashop
-    volumes:
-    - psdata:/var/www/html # Persistir Prestashop
-    - ./modules/ps_welcome_message:/var/www/html/modules/ps_welcome_message
-  # - type: bind # Persistir un tema
-      # source: ./themes/mytheme # path local al module
-      # target: /var/www/html/themes/mytheme # path para montar en el contenedor
-    - psmedia:/var/www/html/img
-    - pstranslations:/var/www/html/translations
-    - pslogs:/var/log
-
+    build: . 
+    # image: prestashop/prestashop:latest # Latest stable version of the PrestaShop,
     restart: unless-stopped
     depends_on:
-      - mysql
+    - mysql
     ports:
-      - 8080:80
+    - 8080:80
+    volumes:
+      - psdata:/var/www/html # Persistir Prestashop
+      - psmedia:/var/www/html/img # Persistir imágenes
+      - pstranslations:/var/www/html/translations # Persistir traducciones
+      - pslogs:/var/log # Persistir logs
+
     environment:
       DB_SERVER: some-mysql
       DB_NAME: prestashop
       DB_USER: root
       DB_PASSWD: admin
-      #PS_INSTALL_AUTO: 1
-      PS_DOMAIN: localhost:8080
-      PS_FOLDER_ADMIN: admin4577 # Ejemplo?
-      PS_FOLDER_INSTALL: install4577  # Ejemplo?
     networks:
-    - prestashop_network
+      - prestashop_network
 
 networks:
   prestashop_network:
 
 volumes:
   dbdata: # Persistir BBDD
-  psdata: # Persist Prestashop
+  psdata: # Persistir Prestashop
   psmedia: # Para imágenes
-  pstranslations: # Para traducciones
+  pstranslations: # Persistir traducciones
   pslogs: # Para logs
