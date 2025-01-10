@@ -1,8 +1,9 @@
+version: "3"
 services:
+  
   mysql:
-    container_name: some-mysql
     image: mysql:5.7
-    restart: unless-stopped
+    container_name: some-mysql
     volumes:
     - dbdata:/var/lib/mysql # Persistir BBDD
     restart: unless-stopped
@@ -10,9 +11,10 @@ services:
       MYSQL_ROOT_PASSWORD: admin
       MYSQL_DATABASE: prestashop
     networks:
-      - prestashop_network
-  
+    - prestashop_network
+
   prestashop:
+    image: prestashop/prestashop:latest
     container_name: prestashop
     volumes:
     - psdata:/var/www/html # Persistir Prestashop
@@ -26,32 +28,27 @@ services:
 
     restart: unless-stopped
     depends_on:
-    - mysql
+      - mysql
     ports:
-    - 8080:80
-    volumes:
-      - psdata:/var/www/html # Persistir Prestashop
-      - psmedia:/var/www/html/img # Persistir imágenes
-      - pstranslations:/var/www/html/translations # Persistir traducciones
-      - pslogs:/var/log # Persistir logs
-
+      - 8080:80
     environment:
       DB_SERVER: some-mysql
       DB_NAME: prestashop
       DB_USER: root
       DB_PASSWD: admin
-      #PS_INSTALL_AUTO: 1
+      # PS_INSTALL_AUTO: 1
       PS_DOMAIN: localhost:8080
       PS_FOLDER_ADMIN: admin4577 # Ejemplo?
       PS_FOLDER_INSTALL: install4577  # Ejemplo?
     networks:
-      - prestashop_network
+    - prestashop_network
 
 networks:
   prestashop_network:
+
 volumes:
   dbdata: # Persistir BBDD
-  psdata: # Persistir Prestashop
+  psdata: # Persist Prestashop
   psmedia: # Para imágenes
-  pstranslations: # Persistir traducciones
+  pstranslations: # Para traducciones
   pslogs: # Para logs
